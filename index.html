@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +44,8 @@
             margin-bottom: 3rem;
             padding-bottom: 1.5rem;
             text-align: center;
+            /* Prevents header from being the last thing on a page */
+            break-after: avoid;
         }
 
         .menu-table { 
@@ -52,6 +54,12 @@
             table-layout: auto; 
             position: relative;
             z-index: 1;
+        }
+
+        /* CRITICAL PRINT FIX: Prevent items from splitting between pages */
+        .menu-table tr {
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
         
         .menu-table td { 
@@ -178,7 +186,11 @@
         }
 
         @media print {
-            .menu-container { box-shadow: none; margin: 0; width: 100%; padding: 40px; }
+            .menu-container { box-shadow: none; margin: 0; width: 100%; padding: 40px; border: none; }
+            .menu-table td { border-bottom: 1px solid #eee; }
+            /* Force table rows to stay on one page */
+            tr { break-inside: avoid !important; page-break-inside: avoid !important; }
+            section { break-inside: auto; }
         }
     </style>
 </head>
@@ -381,5 +393,3 @@
     </script>
 </body>
 </html>
-
-```
