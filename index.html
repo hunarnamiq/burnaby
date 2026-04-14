@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,23 +25,6 @@
         }
         
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-        .admin-bar {
-            background: var(--brand-dark);
-            color: white;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 3px solid var(--brand-gold);
-        }
-
-        .asset-manager {
-            background: #222;
-            padding: 20px;
-            border-bottom: 1px solid var(--brand-gold);
-            color: white;
-        }
 
         .menu-container {
             width: 95%;
@@ -163,46 +147,34 @@
             color: #8b8678; text-align: center; font-size: 1.5rem;
         }
 
-        .gen-btn {
-            background: var(--brand-gold);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
         @media (max-width: 1199px) {
-            .menu-container { padding: 40px 20px; }
-            header h1 { font-size: 10vw !important; }
-            .menu-table td { display: block; width: 100% !important; text-align: center !important; }
-            .img-wrapper { width: 90vw; height: 90vw; margin: 0 auto; }
-            .title-row { flex-direction: column; align-items: center; border: none; }
-            .inline-price { padding: 10px 0; }
-            .col-num { padding: 20px 0 !important; }
+            .menu-container { padding: 30px 15px; margin: 15px auto; width: 95%; }
+            header h1 { font-size: 12vw !important; }
+            header p.text-4xl { font-size: 1.5rem !important; letter-spacing: 0.1em; }
+            header span.text-3xl { font-size: 1.1rem !important; }
+            .category-header { margin-top: 3rem; margin-bottom: 2rem; }
+            .category-header h2 { font-size: 2.2rem !important; }
+            .item-title { font-size: 1.6rem !important; line-height: 1.2; }
+            .item-description { font-size: 1.1rem !important; line-height: 1.5; margin: 8px auto 0; max-width: 100%; }
+            .inline-price { font-size: 1.5rem !important; padding: 5px 0 0 0; }
+            .veggie-label { font-size: 0.75rem; padding: 2px 8px; margin: 5px 0 0 0; }
+            .num-badge { width: 45px; height: 45px; font-size: 1.1rem; border-width: 1px; }
+            .menu-table tr { display: block; border-bottom: 1px dashed var(--brand-gold); padding-bottom: 30px; margin-bottom: 30px; }
+            .menu-table tr:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+            .menu-table td { display: block; width: 100% !important; text-align: center !important; padding: 0 !important; border: none; }
+            .title-row { flex-direction: column; align-items: center; border: none; margin-bottom: 10px; }
+            .col-num { margin-bottom: 15px; }
+            .col-img-box, .col-img-box-right { margin: 20px 0; }
+            .img-wrapper { width: 100%; max-width: 320px; height: auto; aspect-ratio: 1/1; margin: 0 auto; border-width: 4px; }
+            .style-circle { border-width: 6px; }
         }
 
         @media print {
-            .admin-bar, .asset-manager { display: none !important; }
             .menu-container { box-shadow: none; margin: 0; width: 100%; padding: 40px; }
         }
     </style>
 </head>
 <body>
-
-    <div class="admin-bar flex items-center justify-between no-print">
-        <div class="flex items-center gap-4">
-            <h2 class="text-xl font-bold tracking-widest text-amber-500 uppercase">Tava Grill Hub Dashboard</h2>
-        </div>
-        <div class="flex gap-4">
-             <div class="bg-[#926627] text-white font-bold py-2 px-6 rounded-full border border-[#e2dcc8] shadow-lg flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                <span>Order Support</span>
-            </div>
-        </div>
-    </div>
 
     <div class="menu-container">
         <header class="text-center mb-24 relative z-10">
@@ -221,10 +193,7 @@
     </div>
 
     <script type="module">
-        const apiKey = ""; // Environment handles this
-
         const allItemsRaw = [
-            // Shawarma
             { name: "Chicken Shawarma", desc: "Roasted boneless chicken, marinated with lemon and garlic.", price: "$9.49", cat: "shawarma" },
             { name: "Beef Shawarma", desc: "Roasted boneless beef, marinated with lemon and onion.", price: "$11.49", cat: "shawarma" },
             { name: "Mixed Shawarma", desc: "Combination of roasted beef and chicken shawarma.", price: "$11.49", cat: "shawarma" },
@@ -241,7 +210,6 @@
             { name: "Mixed Shawarma & Lamb Kafta", desc: "Beef and chicken shawarma with minced Kebab.", price: "$12.99", cat: "shawarma" },
             { name: "Mixed Shawarma & Wings", desc: "Beef and chicken shawarma with chicken wings.", price: "$11.99", cat: "shawarma" },
 
-            // Sandwiches & Wraps
             { name: "Chicken Shawarma Wrap", desc: "Wrapped in oven-baked naan with salad and sauce.", price: "$4.99", cat: "wraps" },
             { name: "Chicken Arabic Sandwich", desc: "Chicken shawarma in Lebanese naan with salad and chips.", price: "$7.99", cat: "wraps" },
             { name: "Lamb Arabic Sandwich", desc: "Lamb shawarma in Lebanese naan with salad and chips.", price: "$8.89", cat: "wraps" },
@@ -253,11 +221,9 @@
             { name: "Falafel Wrap (V)", desc: "Wrapped in oven-baked naan with salad and sauce.", price: "$4.99", cat: "wraps" },
             { name: "Vegetarian Wrap (V)", desc: "Aubergine and potatoes wrapped in oven-baked naan.", price: "$4.49", cat: "wraps" },
 
-            // Iraqi Bread
             { name: "Fresh Iraqi Samoon (V)", desc: "Traditional freshly baked Iraqi diamond-shaped bread.", price: "$2.49", cat: "iraqi_bread" },
             { name: "Iraqi Oven Flatbread (V)", desc: "Authentic flatbread baked in a traditional clay oven.", price: "$2.99", cat: "iraqi_bread" },
 
-            // Signature Pizzas
             { name: "Halal Meat Feast Pizza", desc: "Topped with premium halal ground beef, lamb chunks, peppers, and mozzarella.", price: "$14.99", cat: "pizzas" },
             { name: "Beef Shawarma Pizza", desc: "Our signature beef shawarma, onions, tomatoes, and garlic sauce drizzle.", price: "$13.99", cat: "pizzas" },
             { name: "Chicken Shawarma Pizza", desc: "Roasted chicken shawarma, mushrooms, sweet corn, and mozzarella cheese.", price: "$13.49", cat: "pizzas" },
@@ -265,7 +231,6 @@
             { name: "Spicy Halal Pepperoni Pizza", desc: "Classic mozzarella base topped with halal beef pepperoni and jalapeños.", price: "$13.99", cat: "pizzas" },
             { name: "Classic Margherita Pizza (V)", desc: "Rich tomato sauce base topped with double mozzarella and fresh basil.", price: "$11.99", cat: "pizzas" },
 
-            // Charcoal Grill
             { name: "King Mixed Kebab Special", desc: "Platter of Lamb Kafta, Chicken Shish, Lamb Shish, and Wings with oven-baked Naan and salad.", price: "$18.99", cat: "grills" },
             { name: "Chicken Shish", desc: "Skewered cubes of grilled chicken breast with Naan and salad.", price: "$9.99", cat: "grills" },
             { name: "Lamb Shish", desc: "Cubes of grilled lamb marinated in special herbs with Naan and salad.", price: "$11.89", cat: "grills" },
@@ -279,7 +244,6 @@
             { name: "Lamb Shish & Wings", desc: "Grilled lamb cubes with flame-grilled chicken wings with Naan and salad.", price: "$10.99", cat: "grills" },
             { name: "Lamb Chops", desc: "Charcoal-grilled, marinated with black pepper and herbs with Naan and salad.", price: "$14.49", cat: "grills" },
 
-            // Lamb & Rice Dishes
             { name: "Lamb On The Bone", desc: "Tender pieces of lamb, slow-cooked in special sauce and herbs. Served with Stew, Salad, Rice & Oven-baked Naan", price: "$9.99", cat: "lamb" },
             { name: "Lamb On Bone (Large)", desc: "Large tender pieces of lamb, slow-cooked in special sauce. Served with Stew, Salad, Rice & Oven-baked Naan", price: "$12.99", cat: "lamb" },
             { name: "Lamb Shank", desc: "Slow-cooked lamb shank marinated in special herbs. Served with Stew, Salad, Rice & Oven-baked Naan", price: "$13.40", cat: "lamb" },
@@ -287,14 +251,12 @@
             { name: "Lamb Loin Chops", desc: "BBQ Lamb back loin, marinated with herbs.", price: "$17.99", cat: "lamb" },
             { name: "Lamb Chopped (Poached)", desc: "BBQ Poached in a lightly spiced vegetable stock.", price: "$16.49", cat: "lamb" },
 
-            // Chicken & Rice Dishes
             { name: "1/4 Chicken", desc: "Oven-roasted quarter chicken. Served with stews, salad, rice, and oven-baked naan.", price: "$8.99", cat: "poultry" },
             { name: "1/2 Chicken With Rice", desc: "Oven-roasted half chicken. Served with stews, salad, rice, and oven-baked naan.", price: "$11.49", cat: "poultry" },
             { name: "1/2 Chicken with Salad", desc: "Oven-roasted half chicken with salad and naan OR chips.", price: "$6.99", cat: "poultry" },
             { name: "Mixed Lamb, Chicken And Rice", desc: "Piece of lamb on bone and quarter chicken, oven-roasted.", price: "$13.89", cat: "poultry" },
             { name: "Biryani", desc: "Fragrant rice with tender pieces of chicken and lamb.", price: "$10.99", cat: "poultry" },
 
-            // Stews
             { name: "Aubergine Stew (V)", desc: "Aubergine, green pepper, and potatoes stew.", price: "$1.99", cat: "stews" },
             { name: "Okra Stew (V)", desc: "Okra cooked in rich tomato sauce.", price: "$1.99", cat: "stews" },
             { name: "Kidney Beans Stew (V)", desc: "Beans cooked in rich tomato sauce.", price: "$1.99", cat: "stews" },
@@ -312,19 +274,16 @@
             { name: "Falafel (V)", desc: "Deep-fried ground chickpeas and garlic.", price: "$7.49", cat: "stews" },
             { name: "Plate Of Salad (V)", desc: "Fresh seasonal salad.", price: "$3.99", cat: "stews" },
 
-            // Basics & Sides
             { name: "Bread (V)", desc: "Fresh oven-baked naan bread.", price: "$1.99", cat: "basics" },
             { name: "Rice (V)", desc: "White or yellow rice.", price: "$1.99", cat: "basics" },
             { name: "Side: Chips (V)", desc: "Large portion of chips.", price: "$2.99", cat: "basics" },
 
-            // Drinks & Desserts
             { name: "Soft Drinks (Can)", desc: "Various canned soda.", price: "$0.99", cat: "extras" },
             { name: "Soft Drinks (1.5L)", desc: "Large bottle of soda.", price: "$2.99", cat: "extras" },
             { name: "Fresh Juice", desc: "Orange, Apple, or Carrot juice.", price: "$2.49", cat: "extras" },
             { name: "Baklava", desc: "Traditional sweet pastry (per piece).", price: "$0.99", cat: "extras" },
             { name: "Ice Cream", desc: "Ben & Jerry's Ice Cream.", price: "$5.99", cat: "extras" },
 
-            // Kids Selection
             { name: "Kids: Nuggets", desc: "4 Piece Chicken Nuggets and Chips.", price: "$3.49", cat: "kids" },
             { name: "Kids: Chicken Shish", desc: "Chicken Shish and Chips.", price: "$4.99", cat: "kids" },
             { name: "Kids: Beefburger", desc: "Beefburger and Chips.", price: "$4.99", cat: "kids" },
@@ -349,7 +308,6 @@
             return name.replace(/\(V\)/g, '').replace(/[:]/g, '').trim().replace(/\s+/g, '_').toLowerCase() + ".png";
         };
 
-        // MENU RENDERER
         const container = document.getElementById('menu-content');
         let globalCounter = 1;
         let globalIdx = 0;
@@ -415,3 +373,4 @@
     </script>
 </body>
 </html>
+
